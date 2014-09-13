@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <input type="text" id="textinput"></input>
+        <input type="button" value="submit" id="buttoninput"></input>
+        <div id="response"></div>
+
+        <script>
+            var textbox = document.getElementById("textinput");
+            var submitButton = document.getElementById("buttoninput");
+            var responseDiv = document.getElementById("response");
+            
+            textbox.focus();
+            
+            function submit() {
+                var userInput = textbox.value;
+                var request = new XMLHttpRequest();
+                
+                request.onreadystatechange = function() {
+                    if (request.readyState==4 && request.status == 200) {
+                        var response = JSON.parse(request.responseText);
+                        
+                        var output = "";
+                        for (var i = 0; i < response.items.length; i++) {
+                            var item = response.items[i];
+                            output += "<p>Description: " + item.description + "<br>Done: " + item.done + "</p>";
+                        }
+                        
+                        responseDiv.innerHTML = output;
+                    }
+                }
+                request.setRequestHeader
+                request.open("GET",userInput,true);
+                request.send();
+            };
+            
+            textbox.onkeypress = function(e) {
+                if (e.keyCode == 13) {
+                    submit();
+                }
+            };
+            
+            submitButton.onclick = function() {
+                submit();
+                textbox.focus();
+            };
+        </script>
+    </body>
+</html>

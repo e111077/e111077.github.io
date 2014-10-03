@@ -62,7 +62,7 @@ function handleResponse(responseText) {
 	$('[type="checkbox"]').click(function(){
 		var etag = this.id;
 		var request = new XMLHttpRequest();
-		request.open("PUT", podURL()+'r'+etag);
+		request.open("PUT", podURL()+'/r'+etag);
     	request.onreadystatechange = function() {
             if (request.readyState==4 && request.status==201) {
 				// why does this always print null, even though it's not?

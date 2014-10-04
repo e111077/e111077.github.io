@@ -52,7 +52,6 @@ function handleResponse(responseText) {
 	while(out.firstChild) { out.removeChild(out.firstChild) }
 	for (i=0; i<messages.length; i++) {
 		var message = messages[i];
-		console.log(message);
 		var completed = message.completed;
 		var splitMessage = message._id.split("r");
 		var etag = splitMessage[splitMessage.length-1];

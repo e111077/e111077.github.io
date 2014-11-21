@@ -1,17 +1,11 @@
-function getAllImages(scope) {
-    scope.media = [];
-    pod.query().filter({appName:"CrossGallery"}).onAllResults(function(item) {
-        owner = item._owner;
-
-        if (owner == pod.getUserId()) {
-            userId = item._id;
-            userMediaList = item.media;
-        }
-
-        var mediaList = item.media;
-
-        for (var i = 0; i < mediaList.length; i++) {
-            scope.media.push({media : mediaList[i]});
-        }
-    }).start();
-}
+angular.module('CrossGallery.services', []).controller('mediaController', function($scope, crossCloudAPIService) {
+    $scope.allMedia = [];
+    crossCloudAPIService.requestAllMediaData().then(
+        function(media) {
+            $scope.allMedia = media;
+             
+        }, function(error) {},
+        function(media) {
+            $scope.allMedia = media;
+    });
+});

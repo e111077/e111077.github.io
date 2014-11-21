@@ -1,0 +1,93 @@
+body {
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, "Lucida Grande", sans-serif;
+    margin: 0 !important;
+}
+
+.body {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.thumb {
+    max-height: 150px;
+}
+
+.wrap {
+    display: inline-block !important;
+}
+
+.block {
+    display: block !important;
+}
+
+.navbar {
+    top: 0;
+    left: 0;
+    border-radius: 0 !important;
+    -moz-border-radius:0 !important;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.centered {
+    margin: 0px auto !important;
+}
+
+.ntitle {
+    font-family: "HelveticaNeue-UltraLight", "Helvetica Neue Light", "Helvetica Neue", Helvetica, "Lucida Grande", sans-serif;
+    font-size: 3em !important;
+    padding-left: 5px;
+    margin-top: 3px;
+}
+
+#mainIcon {
+    max-height: 3em;
+    max-width: 3em;
+}
+
+#mainIcon path {
+    fill: white;
+}
+
+.fright {
+    float: right;
+}
+
+.fleft {
+    float: left;
+}
+
+#fileSelector {
+    position: absolute;
+    z-index: -1;
+}
+
+.vcentered {
+    position: relative;
+    top: 50%;
+    /*transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);*/
+}
+
+.hcentered {
+    transform: translateX(50%);
+    -webkit-transform: translateX(50%);
+    -ms-transform: translateX(50%);
+}
+
+.gallery .segment {
+    height:150;
+    margin: 10px;
+}
+
+.fancyContent {
+    max-width: 1000px !important;
+    max-height: 1000px !important;
+}
+
+#captionText {
+    text-align: center;
+}

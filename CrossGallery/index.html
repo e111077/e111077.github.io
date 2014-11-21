@@ -1,38 +1,82 @@
 <!DOCTYPE html>
 
 <head>
+  <!-- CrossCloud -->
   <script src="http://crosscloud.org/0.1.2/crosscloud.js"></script>
+  <!-- JQuery -->
   <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-  <script src="http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.0/angular.min.js"></script>  
-  <script src="js/upload.js"></script>  
+  <!-- Fancybox -->
+  <link rel="stylesheet" href="lib/fancybox/source/jquery.fancybox.css" type="text/css" media="screen" />
+  <script type="text/JavaScript" src="lib/fancybox/source/jquery.fancybox.pack.js"></script>
+  <link rel="stylesheet" href="lib/fancybox/source/helpers/jquery.fancybox-buttons.css" type="text/css" media="screen" />
+  <script type="text/JavaScript" src="lib/fancybox/source/helpers/jquery.fancybox-buttons.js"></script>
+  <script type="text/JavaScript" src="lib/fancybox/source/helpers/jquery.fancybox-media.js"></script>
+
+  <link rel="stylesheet" href="lib/fancybox/source/helpers/jquery.fancybox-thumbs.css" type="text/css" media="screen" />
+  <script type="text/JavaScript" src="lib/fancybox/source/helpers/jquery.fancybox-thumbs.js"></script>
+  <!-- Angular -->
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.0/angular.min.js"></script>
+  <!-- Semantic -->
+  <link rel="stylesheet" type="text/css" href="lib/semantic-ui/css/semantic.min.css">
+  <script src="lib/semantic-ui/javascript/semantic.min.js"></script>
+  <!-- User -->
+  <link rel="stylesheet" type="text/css" href="css/main.css">
+  <script src="js/app.js"></script>
+  <script src="js/services.js"></script>
+  <script src="js/controllers.js"></script>
+  <script src="js/upload.js"></script>
+  <script src="js/main.js"></script>
 </head>
 
 <body>
-<input type="file" id="files" name="files[]" multiple capture="camera" />
-<output id="list"></output>
+  <input type="file" id="fileSelector" name="files[]" multiple capture="camera" />
 
-<button type="button" id="ok" onclick="pushToServer()">OK</button>
+  <!-- NAVBAR -->
+  <div class="ui centered inverted black menu navbar">
+    <!-- left -->
+    <div class="left item">
+      <div class='fleft'>
+            <img src='img/icon.svg' class='svg' id='mainIcon'>
+        </div>
+        <div class='fright ntitle'>CrossGallery</div>
+    </div>
 
-<style>
-  .thumb {
-    height: 200px;
-    border: 1px solid #000;
-    margin: 10px 5px 0 0;
-  }
-
-</style>
-
-<script>
-  document.getElementById('files').addEventListener('change', handleFileSelect, false);
-</script>
-
-<div id="images">
-</div>
-<!-- <div ng-controller="AllImagesController as images">
-  <div ng-repeat="item in images.media">
-    <img ng-src="{{item.dataURL}}">
-    <p>${{item.dataURL}}</p>
+    <!-- right -->
+    <div class="right item">
+      <div>
+        <div class="black ui button" id="selectImage">
+          Select Image
+        </div>
+      </div>
+    </div>
   </div>
-</div> -->
-  
+
+  <!-- body -->
+  <div class="body">
+    <!-- image preview -->
+    <div class="uploadImage">
+      <div class="centered hidden upload">
+        <div id="uploadButton" class="ui inverted black centered block button">
+          Upload
+        </div>
+        <div class="ui centered block input text">
+          <input id="captionText" placeholder="Enter a caption" type="text">
+        </div>
+      </div>
+      <div class="centered" id="imagePreview">
+      </div>
+    </div>
+
+    <!-- images -->
+    <div ng-app="CrossGallery" ng-controller="mediaController" class="gallery">
+      <a ng-repeat="media in allMedia" title="{{media.caption}}" class="ui fancybox segment wrap" href="#{{media._id.split('/')[3]}}" owner="{{media._owner}}" rel="gallery">
+        <img class="thumb vcentered" ng-src="{{media.dataURL}}">
+
+        <!-- fancybox content -->
+        <div class="hidden">
+          <img class="fancyContent" ng-src="{{media.dataURL}}" id="{{media._id.split('/')[3]}}">
+        </div>
+      </a>
+    </div>
+  </div>
 </body>

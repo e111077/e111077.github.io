@@ -1,4 +1,0 @@
-CrossGallery
-============
-
-CrossCloud Gallery

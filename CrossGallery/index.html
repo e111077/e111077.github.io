@@ -69,12 +69,12 @@
 
     <!-- images -->
     <div ng-app="CrossGallery" ng-controller="mediaController" class="gallery">
-      <a ng-repeat="media in allMedia" title="{{media.caption}}" class="ui fancybox segment wrap" href="#{{media._id.split('/')[3]}}" owner="{{media._owner}}" rel="gallery">
+      <a ng-repeat="media in allMedia" title="{{media.caption}}" class="ui fancybox segment wrap" href="#{{media.id}}" owner="{{media._owner}}" rel="gallery">
         <img class="thumb vcentered" ng-src="{{media.dataURL}}">
 
         <!-- fancybox content -->
         <div class="hidden">
-          <img class="fancyContent" ng-src="{{media.dataURL}}" id="{{media._id.split('/')[3]}}">
+          <img class="fancyContent" ng-src="{{media.dataURL}}" id="{{media.id}}">
         </div>
       </a>
     </div>

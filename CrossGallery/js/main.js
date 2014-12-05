@@ -44,6 +44,9 @@ $(document).ready(function() {
     });
 
     $('#selectImage').on('click', function() {
-        $('#fileSelector').trigger('click');
+        var uploadDiv = $('.upload');
+        if (uploadDiv.hasClass('hidden')) {
+            uploadDiv.transition('slide down');
+        }
     });
 });

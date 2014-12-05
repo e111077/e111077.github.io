@@ -55,12 +55,17 @@
   <div class="body">
     <!-- image preview -->
     <div class="uploadImage">
-      <div class="centered hidden upload">
+      <div class="ui centered hidden upload form">
+        <div class="two fields">
+          <div class="ui field block input text">
+            <input id="newUrl" placeholder="Enter a URL" type="text">
+          </div>
+          <div class="ui field block input text">
+            <input id="captionText" placeholder="Enter a caption" type="text">
+          </div>
+        </div>
         <div id="uploadButton" class="ui inverted black centered block button">
           Upload
-        </div>
-        <div class="ui centered block input text">
-          <input id="captionText" placeholder="Enter a caption" type="text">
         </div>
       </div>
       <div class="centered" id="imagePreview">
@@ -70,11 +75,16 @@
     <!-- images -->
     <div ng-app="CrossGallery" ng-controller="mediaController" class="gallery">
       <a ng-repeat="media in allMedia" title="{{media.caption}}" class="ui fancybox segment wrap" href="#{{media.id}}" owner="{{media._owner}}" rel="gallery">
-        <img class="thumb vcentered" ng-src="{{media.dataURL}}">
+        <img class="thumb vcentered" ng-src="{{media.url}}">
 
         <!-- fancybox content -->
         <div class="hidden">
-          <img class="fancyContent" ng-src="{{media.dataURL}}" id="{{media.id}}">
+          <img class="fancyContent" ng-src="{{media.url}}" id="{{media.id}}">
+          <!-- comments -->
+          <!-- <div ng-repeat="comment in media.comments" class="comment" owner="{{media._owner}}">
+          asdf
+            {{comment.content}}
+          </div> -->
         </div>
       </a>
     </div>

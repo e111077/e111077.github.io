@@ -49,6 +49,7 @@ $(document).ready(function() {
       imagePreview.html("");
       uploadDiv.transition('slide down');
     }
+    
 
     var caption = captionText.val();
     var url = urlField.val();
@@ -58,7 +59,6 @@ $(document).ready(function() {
       urlField.val("");
 
       var mediaItem = pod.push({appName:appVersion, type:"media", url:url, caption:caption}, function(mediaItem) {
-        pod.push({appName:appVersion, type:"comment",content:caption,mediaId:mediaItem._id});
       });
     }
   }

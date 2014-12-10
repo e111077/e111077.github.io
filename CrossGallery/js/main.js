@@ -1,5 +1,9 @@
+appVersion = "CrossGallery_v0.4";
+pod = crosscloud.connect();
+
 $(document).ready(function() {
     jQuery('.fancybox').fancybox({
+        margin      : [20, 80, 20, 80],
         helpers : {
             title   : {
                 type: 'outside'
@@ -8,7 +12,7 @@ $(document).ready(function() {
                 width   : 50,
                 height  : 50
             },
-            fitToView : true
+            fitToView : true,   
         }
     });
 
@@ -49,4 +53,39 @@ $(document).ready(function() {
             uploadDiv.transition('slide down');
         }
     });
+
+    $(document).on('keyup', '.comment.submission .input input', function(e){
+        if (e.keyCode == 13){
+            $(this).parent().parent().children(".button").trigger("click");
+        }
+    })
+
+    $(document).on('click', '.comment.submission .submit.button', function() {
+        submitComment(this);
+
+        });
+
+    submitComment = function(that){
+        var commentField = $(that).parent().children(".input").children()[0]
+        var comment = commentField.value;
+        var mediaId = $(that).attr("mediaId");
+
+        if (comment == "") {
+            alert("Please enter a comment");
+        }
+
+        var comments = $('.fancybox-wrap .comments');
+
+        pod.push({appName:appVersion, type:"comment",content:comment,mediaId:mediaId}, function(commentObject){
+
+            commentObject._owner = pod.podURL;
+            var commentHtml = commentToHtml(commentObject);
+            comments.append(commentHtml);
+
+            commentField.value = "";
+
+
+        })
+    }
+    
 });

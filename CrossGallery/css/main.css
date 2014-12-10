@@ -34,6 +34,24 @@ body {
 .centered {
     margin: 0px auto !important;
 }
+.fancybox-prev{
+    left: -80px;
+    width: 30px;
+}
+
+.fancybox-next {
+    right: -80px;
+    width: 30px;
+}
+
+.fancybox-nav:hover span {
+    opacity: 1;
+}
+
+.fancybox-nav span {
+    visibility: visible;
+    opacity: 0.5;
+}
 
 .ntitle {
     font-family: "HelveticaNeue-UltraLight", "Helvetica Neue Light", "Helvetica Neue", Helvetica, "Lucida Grande", sans-serif;
@@ -83,11 +101,45 @@ body {
     margin: 10px;
 }
 
-.fancyContent {
-    max-width: 1000px !important;
-    max-height: 700px !important;
+.fancyContent img {
+    max-width: 700px !important;
+    max-height: 500px !important;
+}
+
+.fancybox-skin {
+    background-color: #F0F0F0;
 }
 
 #captionText {
     text-align: center;
+}
+
+.comment.submission {
+    padding-top: 10px;
+    display: block;
+}
+
+.comment.submission .text {
+    width: 70%;
+}
+
+.comment.submission .button {
+    width: 20%;
+}
+
+.blue-text {
+    color: #009FDA !important;
+}
+
+a.blue-text:hover {
+    color: #00BAFF !important;
+}
+
+.comment {
+    padding-top: 10px;
+}
+
+.ui.comments {
+    max-height: 90px;
+    overflow-y: auto;
 }

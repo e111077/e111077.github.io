@@ -3,6 +3,9 @@ pod = crosscloud.connect();
 
 $(document).ready(function() {
     var $uploadDiv = $('.upload');
+    var $captionText = $('#captionText');
+    var $urlField = $('#newUrl');
+
 
     jQuery('.fancybox').fancybox({
         margin      : [20, 80, 20, 80],
@@ -67,7 +70,10 @@ $(document).ready(function() {
         }
 
         if ($uploadDiv.hasClass('visible')) {
-          $uploadDiv.transition('slide down');
+            $uploadDiv.transition('slide down', function() {
+                $captionText.val("");
+                $urlField.val("");
+            });
         }
     });
 

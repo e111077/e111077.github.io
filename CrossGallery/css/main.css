@@ -12,6 +12,11 @@ body {
     max-height: 150px;
 }
 
+.clickable {
+    cursor: pointer;
+    cursor: hand;
+}
+
 .wrap {
     display: inline-block !important;
 }
@@ -142,4 +147,26 @@ a.blue-text:hover {
 .ui.comments {
     max-height: 90px;
     overflow-y: auto;
+}
+
+.deleteMedia.button {
+    position: absolute;
+    z-index: 10;
+    display: none;
+}
+
+.deleteComment.icon:hover {
+    color: #E75859 !important;
+}
+
+.mediaWrapper:hover .deleteMedia.button {
+    display: block !important;
+}
+
+.comment:hover .deleteComment.icon {
+    display: inline-block !important;
+}
+
+.uploadImage {
+    padding-top: 10px;
 }

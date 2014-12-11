@@ -1,12 +1,12 @@
 $(document).ready(function() {
-  var imagePreview = $('#imagePreview');
-  var uploadButton = $('#uploadButton');
-  var captionText = $('#captionText');
-  var urlField = $('#newUrl');
-  var uploadDiv = $('.upload');
+  var $imagePreview = $('#imagePreview');
+  var $uploadButton = $('#uploadButton');
+  var $captionText = $('#captionText');
+  var $urlField = $('#newUrl');
+  var $uploadDiv = $('.upload');
 
   // $('#fileSelector').on('change', handleFileSelect);
-  uploadButton.on('click', pushToServer);
+  $uploadButton.on('click', pushToServer);
 
   // function handleFileSelect(evt) {
   //   var files = evt.target.files; // FileList object
@@ -26,11 +26,11 @@ $(document).ready(function() {
   //       return function(e) {
   //         dataURL = e.target.result;
   //         // Render thumbnail.
-  //         imagePreview.html(['<img class="centered block thumb" src="', e.target.result,'" title="', escape(theFile.name), '"/>'].join(''));
+  //         $imagePreview.html(['<img class="centered block thumb" src="', e.target.result,'" title="', escape(theFile.name), '"/>'].join(''));
           
           
-  //         if (uploadDiv.hasClass('hidden')) {
-  //           uploadDiv.transition('slide down');
+  //         if ($uploadDiv.hasClass('hidden')) {
+  //           $uploadDiv.transition('slide down');
   //         }
   //       };
   //     })(f);
@@ -40,24 +40,30 @@ $(document).ready(function() {
   //   }
   // }
 
+  // pushes the media to the server
   function pushToServer() {
-    if (uploadDiv.hasClass('animating')) {
+    // will not submit if it is animating
+    if ($uploadDiv.hasClass('animating')) {
       return;
     }
 
-    if (uploadDiv.hasClass('visible')) {
-      imagePreview.html("");
-      uploadDiv.transition('slide down');
+    // closes the form
+    if ($uploadDiv.hasClass('visible')) {
+      $imagePreview.html("");
+      $uploadDiv.transition('slide down');
     }
-    
 
-    var caption = captionText.val();
-    var url = urlField.val();
+    // gets the caption and the url
+    var caption = $captionText.val();
+    var url = $urlField.val();
 
-    if (url != undefined || url != "" || caption != undefined || caption != "") {
-      captionText.val("");
-      urlField.val("");
+    // checks if there are any issues with the input
+    if (url != undefined && url != "" && caption != undefined && caption != "") {
+      // clears the fields
+      $captionText.val("");
+      $urlField.val("");
 
+      // pushes to server
       var mediaItem = pod.push({appName:appVersion, type:"media", url:url, caption:caption}, function(mediaItem) {
       });
     }

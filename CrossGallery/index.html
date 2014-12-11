@@ -64,7 +64,10 @@
             <input id="captionText" placeholder="Enter a caption" type="text">
           </div>
         </div>
-        <div id="uploadButton" class="ui inverted black centered block button">
+        <div id="cancelButton" class="ui inverted red wrap button">
+          Cancel
+        </div>
+        <div id="uploadButton" class="ui inverted black wrap button">
           Submit Image
         </div>
       </div>
@@ -83,40 +86,45 @@
   <div class="hidden templates">
     <!-- MEDIA TEMPLATE -->
     <div class="mediaTemplate">
-      <a class="ui {{fancybox}} segment wrap" rel="gallery" title="{{caption}}" href="#{{linkableId}}" mediaId="{{{_id}}}">
-        <img class="thumb vcentered" src="{{{url}}}">
-
-        <!-- fancybox content -->
-        <div class="hidden">
-          <div class="fancyContent" id="{{linkableId}}">
-            <img src="{{{url}}}">
-            <!-- comments -->
-
-            <div class="ui comments" mediaId="{{{_id}}}">
-
-            </div>
-            
-            <!-- submit comments -->
-            <div class="class ui two comment submission fields">
-              <div class="ui field input text">
-                <input type="text" placeholder="Write a comment...">
-              </div>
-              <div class="ui inverted black submit button field" mediaId = "{{{_id}}}">
-                submit
-              </div>
-            </div>
-
-          </div>
+      <div class="ui segment wrap mediaWrapper" mediaId="{{{_id}}}">
+        <div class="ui red deleteMedia button" mediaId="{{{_id}}}">
+          Delete
         </div>
-      </a>
+        <a class="ui {{fancybox}} wrap" rel="gallery" title="{{caption}}" href="#{{linkableId}}" mediaId="{{{_id}}}">
+          <img class="thumb vcentered" src="{{{url}}}">
+
+          <!-- fancybox content -->
+          <div class="hidden">
+            <div class="fancyContent" id="{{linkableId}}">
+              <img src="{{{url}}}">
+              <!-- comments -->
+
+              <div class="ui comments" mediaId="{{{_id}}}">
+
+              </div>
+              
+              <!-- submit comments -->
+              <div class="class ui two comment submission fields">
+                <div class="ui field input text">
+                  <input type="text" placeholder="Write a comment...">
+                </div>
+                <div class="ui inverted black submit button field" mediaId = "{{{_id}}}">
+                  submit
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </a>
+      </div>
     </div>
   
     <!-- COMMENT TEMPLATE -->
     <div class="commentTemplate">
-      <div class="comment" commentId="{{_id}}">
+      <div class="comment wrapper" mediaId="{{{mediaId}}}" commentId="{{{_id}}}">
         <div class="content">
           <div class="fright">
-            <a class="author blue-text">
+            <a class="author blue-text" href="{{{_owner}}}">
               {{{owner}}}
             </a>
             <div class="ui label fright">
@@ -124,6 +132,7 @@
             </div>
           </div>
           <div class="text">
+            <i class="ui hidden clickable red remove deleteComment icon" commentId="{{{_id}}}"></i>
             {{content}}
           </div>
         </div>

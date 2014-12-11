@@ -47,12 +47,6 @@ $(document).ready(function() {
       return;
     }
 
-    // closes the form
-    if ($uploadDiv.hasClass('visible')) {
-      $imagePreview.html("");
-      $uploadDiv.transition('slide down');
-    }
-
     // gets the caption and the url
     var caption = $captionText.val();
     var url = $urlField.val();
@@ -63,9 +57,17 @@ $(document).ready(function() {
       $captionText.val("");
       $urlField.val("");
 
+      // closes the form
+      if ($uploadDiv.hasClass('visible')) {
+        $imagePreview.html("");
+        $uploadDiv.transition('slide down');
+      }
+
       // pushes to server
       var mediaItem = pod.push({appName:appVersion, type:"media", url:url, caption:caption}, function(mediaItem) {
       });
+    } else {
+      alert("Url and Caption are required fields.");
     }
   }
 });

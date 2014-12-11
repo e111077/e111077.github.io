@@ -170,3 +170,7 @@ a.blue-text:hover {
 .uploadImage {
     padding-top: 10px;
 }
+
+.iconWrapper {
+    width:20px;
+}
